@@ -11,3 +11,9 @@ product.save!
 
 product = Product.new(name: "pen", price: 2, image_url: "https://d1o785do8fyxgx.cloudfront.net/stock_item/stock_item_images/images/000/000/592/original/EMP_PEN_ROLLERBALL_WAVE_LIGHT_PINK_1_ECOMM_RESIZED.png?1661262182", description: "A nice pink pen")
 product.save!
+
+supplier = Supplier.create(name: "Cosrx", email: "corsx@test.com", phone_number: "1111111111")
+
+supplier = Supplier.create(name: "Some by Mi", email: "somebymi@test.com", phone_number: "2222222222")
+
+supplier = Supplier.create(name: "innisfree", email: "innisfree@test.com", phone_number: "3333333333")
