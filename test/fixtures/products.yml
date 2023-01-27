@@ -3,11 +3,11 @@
 one:
   name: TestProduct1
   price: 1
-  image_url: MyString
   description: TestProductDescription
+  supplier: one
 
 two:
   name: TestProduct2
   price: 1
-  image_url: MyString
   description: TestProductDescription
+  supplier: two
