@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   post "/users" => "users#create"
   #login
   post "/sessions" => "sessions#create"
+
+  get "/orders" => "orders#index"
 end
