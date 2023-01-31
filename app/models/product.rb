@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :supplier
   has_many :orders
+  has_many :category_products
   # validates :supplier_id, presence: true
   validates :name, presence: true
   validates :name, uniqueness: true
