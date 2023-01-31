@@ -1,10 +1,6 @@
 class ProductsController < ApplicationController
-  def show
-    @product = Product.find_by(id: params["id"])
-
-    render :show
-  end
-
+  before_action :autenticate_admin, except: [:index, :show]
+  
   def index
     @products = Product.all
     render :index
@@ -12,9 +8,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(
-      name: params["name"],
-      price: params["price"],
-      description: params["description"],
+      name: params[:name],
+      price: params[:price],
+      description: params[:description],
       supplier_id: params[:supplier_id],
     )
 
@@ -26,6 +22,11 @@ class ProductsController < ApplicationController
     else
       render json: { errors: @product.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @product = Product.find_by(id: params[:id])
+    render :show
   end
 
   def update
@@ -44,7 +45,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    product = Product.find_by(id: params["id"])
+    product = Product.find_by(id: params[:id])
     product.destroy
     render json: { message: "Product destroyed" }
   end
