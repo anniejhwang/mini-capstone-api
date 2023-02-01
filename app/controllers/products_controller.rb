@@ -1,8 +1,13 @@
 class ProductsController < ApplicationController
   before_action :autenticate_admin, except: [:index, :show]
-  
+
   def index
     @products = Product.all
+
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      @products = category.products
+    end
     render :index
   end
 
@@ -13,9 +18,8 @@ class ProductsController < ApplicationController
       description: params[:description],
       supplier_id: params[:supplier_id],
     )
-
     if @product.valid?
-      if params[:iamge_url]
+      if params[:image_url]
         Image.create(url: params[:image_url], product_id: @product.id)
       end
       render :show
@@ -36,7 +40,6 @@ class ProductsController < ApplicationController
       price: params["price"] || @product.price,
       description: params["description"] || @product.description,
     )
-
     if @product.valid?
       render :show
     else

@@ -24,7 +24,7 @@ class Product < ApplicationRecord
   end
 
   def total
-    sum = price + tax
+    price + tax
   end
 
   # def supplier
